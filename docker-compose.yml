@@ -1,0 +1,7 @@
+version: "3"
+services:
+  ubuntu:
+    build: .
+    restart: always
+    ports:
+      - "2201:22"
