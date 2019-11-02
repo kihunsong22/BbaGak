@@ -22,8 +22,8 @@ options.add_argument('--no-proxy-server')
 options.add_argument("--proxy-server='direct://'")
 options.add_argument("--proxy-bypass-list=*")
 
-f = open('/root/bbagak/log.txt', 'a', buffering=1)
-driver = webdriver.Chrome('/root/bbagak/chromedriver_77', options=options)
+# f = open('/root/bbagak/log.txt', 'a', buffering=1)
+driver = webdriver.Chrome('./chromedriver', options=options)
 driver.implicitly_wait(3)
 #fprint('loading complete')
 # sys.stdout.flush()
@@ -32,8 +32,8 @@ driver.implicitly_wait(3)
 def fprint(text):
     text = str(text)
     print(text)
-    text = text + '\n'
-    f.write(text)
+    # text = text + '\n'
+    # f.write(text)
 
 
 def auto_script(bba_id, bba_pass):
