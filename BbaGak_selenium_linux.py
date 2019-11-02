@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
-options.add_argument('window-size=1280x720')
+#options.add_argument('window-size=1280x720')
 options.add_argument('disable-gpu')
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36')
 options.add_argument('lang=ko_KR')
@@ -31,6 +31,7 @@ driver.implicitly_wait(3)
 def fprint(text):
     text = str(text)
     print(text)
+    text = text + '\n'
     f.write(text)
 
 
@@ -48,14 +49,14 @@ def auto_script(bba_id, bba_pass):
     time.sleep(1)
 
     # 출첵게시판
-    fprint('browsing through bulletin board')
+    fprint('  browsing through bulletin board')
     driver.get('http://bbasak.com/bbs/board.php?bo_table=com25')
     driver.find_element_by_css_selector('#fboardlist > div.btnwrite > p.fr.pr10 > a > span').click()
 
     # 글쓰기
-    fprint('writing attendance check')
+    fprint('  writing attendance check')
     WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#fwrite > table > tbody > tr:nth-child(3) > td > div.notice_img_warning > img')))
-    fprint('attendance check loading complete')
+    fprint('  attendance check loading complete')
     driver.find_element_by_css_selector('#fwrite > table > tbody > tr:nth-child(1) > td > input').send_keys('출석')
     driver.find_element_by_css_selector('#fwrite > table > tbody > tr:nth-child(3) > td > div.notice_img_warning > img').click()
 
@@ -68,7 +69,7 @@ def auto_script(bba_id, bba_pass):
     time.sleep(0.5)
 
     # 로그아웃
-    fprint('logging out')
+    fprint('  logging out')
     driver.find_element_by_css_selector('#gm > li:nth-child(5) > a').click()
 
 
