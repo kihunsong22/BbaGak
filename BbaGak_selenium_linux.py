@@ -4,6 +4,7 @@ from random import *
 #import sys
 #from multiprocessing import Process
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager #use to initialize driver in a better way without having chromedriver path mentioned. 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -23,7 +24,7 @@ options.add_argument("--proxy-server='direct://'")
 options.add_argument("--proxy-bypass-list=*")
 
 # f = open('/root/bbagak/log.txt', 'a', buffering=1)
-driver = webdriver.Chrome('./chromedriver', options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options) #This installs or finds the new version of chrome driver if not available. 
 driver.implicitly_wait(3)
 #fprint('loading complete')
 # sys.stdout.flush()
